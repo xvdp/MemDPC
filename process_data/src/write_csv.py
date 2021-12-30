@@ -1,4 +1,6 @@
+import sys
 import os
+import os.path as osp
 import csv
 import glob
 
@@ -94,8 +96,8 @@ def main_Kinetics400(mode, k400_path, f_root, csv_root='../data/kinetics400'):
 if __name__ == '__main__':
     # f_root is the frame path
     # edit 'your_path' here: 
-
-    main_UCF101(f_root='your_path/UCF101/frame', 
+    your_path = '..' if len(sys.argv) < 2 else sys.argv[1]
+    main_UCF101(f_root=output_path=osp.abspath(osp.join(your_path, 'UCF101/frame')), 
                 splits_root='your_path/UCF101/splits_classification')
 
     # main_HMDB51(f_root='your_path/HMDB51/frame',
