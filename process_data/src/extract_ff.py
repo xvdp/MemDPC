@@ -1,5 +1,7 @@
+import sys
 import json
 import os
+import os.path as osp
 import sys 
 import cv2
 import numpy as np 
@@ -151,15 +153,16 @@ def main_kinetics400(v_root, frame_root, flow_root):
 
 
 if __name__ == '__main__':
-    # edit 'your_path' here: 
-    main_UCF101(v_root='your_path/UCF101/videos',
-                frame_root='your_path/UCF101/frame',
-                flow_root='your_path/UCF101/flow')
+    # edit 'your_path' here:
+    your_path = '..' if len(sys.argv) < 2 else sys.argv[1]
+    main_UCF101(v_root=osp.abspath(osp.join(your_path, 'UCF101/videos')),
+                frame_root=osp.abspath(osp.join(your_path, 'UCF101/frame')),
+                flow_root=osp.abspath(osp.join(your_path, 'UCF101/flow')))
 
-    main_HMDB51(v_root='your_path/HMDB51/videos',
-                frame_root='your_path/HMDB51/frame',
-                flow_root='your_path/HMDB51/flow')
+    main_HMDB51(v_root=osp.abspath(osp.join(your_path, 'HMDB51/videos')),
+                frame_root=osp.abspath(osp.join(your_path, 'HMDB51/frame')),
+                flow_root=osp.abspath(osp.join(your_path, 'HMDB51/flow')))
 
-    main_kinetics400(v_root='your_path/Kinetics400/videos',
-                frame_root='your_path/Kinetics400/frame',
-                flow_root='your_path/Kinetics400/flow')
+    main_kinetics400(v_root=osp.abspath(osp.join(your_path, 'Kinetics400/videos')),
+                frame_root=osp.abspath(osp.join(your_path, 'Kinetics400/frame')),
+                flow_root=osp.abspath(osp.join(your_path, 'Kinetics400/flow')))
