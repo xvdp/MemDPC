@@ -1,6 +1,8 @@
 # by htd@robots.ox.ac.uk
+import sys
 from joblib import delayed, Parallel
-import os 
+import os
+import os.path as osp
 import sys 
 import glob 
 import subprocess
@@ -74,5 +76,6 @@ def main_kinetics400(output_path='your_path/kinetics400'):
 
 
 if __name__ == '__main__':
-    main_kinetics400(output_path='your_path/kinetics400')
+    your_path = '..' if len(sys.argv) < 2 else sys.argv[1]
+    main_kinetics400(output_path=osp.abspath(osp.join(your_path, 'kinetics400')))
     # users need to change output_path and v_root
